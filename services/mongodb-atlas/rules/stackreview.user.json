@@ -1,0 +1,31 @@
+{
+    "collection": "user",
+    "database": "stackreview",
+    "roles": [
+        {
+            "name": "default",
+            "apply_when": {},
+            "read": true,
+            "write": false,
+            "insert": false,
+            "delete": false,
+            "additional_fields": {}
+        }
+    ],
+    "schema": {
+        "bsonType": "object",
+        "properties": {
+            "_id": {
+                "bsonType": "objectId"
+            },
+            "uid": {
+                "bsonType": "string",
+                "unique": true
+            },
+            "username": {
+                "bsonType": "string"
+            }
+        },
+        "title": "user"
+    }
+}

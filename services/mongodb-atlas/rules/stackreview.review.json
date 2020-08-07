@@ -1,0 +1,121 @@
+{
+    "collection": "review",
+    "database": "stackreview",
+    "filters": [
+        {
+            "name": "default",
+            "query": {},
+            "projection": {
+                "_id": {
+                    "$numberInt": "0"
+                },
+                "createdAt": {
+                    "$numberInt": "0"
+                },
+                "updatedAt": {
+                    "$numberInt": "0"
+                }
+            },
+            "apply_when": {}
+        }
+    ],
+    "relationships": {
+        "username": {
+            "ref": "#/relationship/mongodb-atlas/stackreview/user",
+            "source_key": "username",
+            "foreign_key": "_id",
+            "is_list": false
+        }
+    },
+    "roles": [
+        {
+            "name": "owner",
+            "apply_when": {
+                "username": "%%user.id"
+            },
+            "read": true,
+            "write": true,
+            "insert": true,
+            "delete": true,
+            "additional_fields": {}
+        },
+        {
+            "name": "non-owner",
+            "apply_when": {},
+            "read": true,
+            "write": false,
+            "insert": false,
+            "delete": false,
+            "additional_fields": {}
+        }
+    ],
+    "schema": {
+        "additionalProperties": false,
+        "bsonType": "object",
+        "properties": {
+            "_id": {
+                "bsonType": "objectId"
+            },
+            "code": {
+                "bsonType": "string"
+            },
+            "createdAt": {
+                "bsonType": "date"
+            },
+            "private": {
+                "bsonType": "boolean",
+                "default": false
+            },
+            "reviews": {
+                "bsonType": "array",
+                "items": {
+                    "additionalProperties": false,
+                    "bsonType": "object",
+                    "properties": {
+                        "cid": {
+                            "bsonType": "string",
+                            "unique": true
+                        },
+                        "comment": {
+                            "bsonType": "string"
+                        },
+                        "createdAt": {
+                            "bsonType": "date"
+                        },
+                        "line": {
+                            "bsonType": "int"
+                        },
+                        "updatedAt": {
+                            "bsonType": "date"
+                        },
+                        "username": {
+                            "bsonType": "objectId"
+                        }
+                    },
+                    "required": [
+                        "cid",
+                        "username",
+                        "comment",
+                        "line"
+                    ],
+                    "title": "comment"
+                }
+            },
+            "rid": {
+                "bsonType": "string",
+                "unique": true
+            },
+            "updatedAt": {
+                "bsonType": "date"
+            },
+            "username": {
+                "bsonType": "objectId"
+            }
+        },
+        "required": [
+            "rid",
+            "code"
+        ],
+        "title": "review"
+    }
+}

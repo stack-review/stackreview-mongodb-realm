@@ -1,0 +1,18 @@
+{
+    "app_id": "stackreview-vhvmg",
+    "config_version": 20200603,
+    "name": "stackreview",
+    "location": "IE",
+    "deployment_model": "LOCAL",
+    "security": {},
+    "custom_user_data_config": {
+        "enabled": true,
+        "mongo_service_name": "mongodb-atlas",
+        "database_name": "stackreview",
+        "collection_name": "user",
+        "user_id_field": "username"
+    },
+    "sync": {
+        "development_mode_enabled": false
+    }
+}
